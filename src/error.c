@@ -1,5 +1,4 @@
-#include "push_swap.h"
-#include "push_swap_structs.h"
+#include "../inc/push_swap.h"
 
 void	error_exit(char *error)
 {

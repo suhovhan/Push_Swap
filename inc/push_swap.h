@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "push_swap_structs.h"
+# include "./push_swap_structs.h"
 
 //............utils.c...........
 
@@ -33,6 +33,14 @@ char	*ft_strjoin(int ac, char **av);
 //........str_functions.c.......
 
 int	append(t_stack **head_ref, int new_data);
+int	ft_list_len(t_stack *head_ref);
+int	set_index(t_stack **head_ref);
+int	get_index(t_stack **head_ref);
+
+//........str_functions.c.......
+
+//.....pysh_swap_functions.c....
+
 int	pa(t_stack **a, t_stack **b);
 int	pb(t_stack **head_a, t_stack **head_b);
 int	ss(t_stack **head_a, t_stack **head_b);
@@ -45,7 +53,15 @@ int	rb(t_stack **head_b);
 int	rra(t_stack **head_a);
 int	rrb(t_stack **head_b);
 
-//........str_functions.c.......
+//.....pysh_swap_functions.c....
+
+//..........algoritm............
+
+int	algo2(t_stack **a);
+int	run_algo(t_stack **a);
+
+//..........algoritm............
+
 
 
 #endif

@@ -4,13 +4,19 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = $(wildcard *.c)
+OBJ_DIR = obj
 
-OBJS = $(patsubst %.c, %.o, $(SRCS))
+SRCS = $(wildcard ./src/*.c)
+
+OBJS = $(patsubst ./src/%.c, ./$(OBJ_DIR)/%.o, $(SRCS))
+
+MK = mkdir -p
 
 RM = rm -f
 
-%.o: %.c
+RMDIR = rm -rf
+
+$(OBJ_DIR)/%.o: ./src/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
@@ -18,8 +24,11 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
+$(OBJ_DIR):
+	$(MK) -p $(OBJ_DIR)
+
 clean:
-	$(RM) $(OBJS)
+	$(RMDIR)	$(OBJ_DIR)
 
 fclean: clean
 	$(RM)  $(NAME)
