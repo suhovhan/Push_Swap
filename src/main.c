@@ -20,7 +20,12 @@ int	main(int ac, char **av)
 	}
 	check_duble(&a);
 	get_index(&a);
-	run_algo(&a);
+	run_algo(&a, &b);
+	while (a)
+	{
+		printf("a->nb = %d   a->index = %d\n", a->nb, a->index);
+		a = a->next;
+	}
 	i = -1;
 	while (matrix[++i])
 		free(matrix[i]);
