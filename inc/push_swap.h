@@ -58,9 +58,14 @@ int	rrb(t_stack **head_b);
 //..........algoritm............
 
 int	algo2(t_stack **a);
+int	algo3(t_stack **stack_a);
+int	algo4(t_stack **stack_a, t_stack **stack_b);
+int	algo5(t_stack **stack_a, t_stack **stack_b);
 int	run_algo(t_stack **stack_a, t_stack **stack_b);
-int	to_stack_b(t_stack **stack_a, t_stack **stack_b);
 int	sort_stack(t_stack **stack_a, t_stack **stack_b);
+int	max_node_to_start(t_stack **stack_b, t_algo data);
+int	max_node_to_start(t_stack **stack_b, t_algo data);
+t_algo	to_stack_b(t_stack **stack_a, t_stack **stack_b);
 
 //..........algoritm............
 

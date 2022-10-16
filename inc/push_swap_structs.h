@@ -8,5 +8,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
+typedef struct s_algo
+{
+	int	iterator;
+	int	counter;
+	int	n;
+}				t_algo;
+
 
 #endif
