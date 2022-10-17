@@ -14,26 +14,39 @@
 
 char	*ft_strjoin(int ac, char **av)
 {
+	t_pars	pars;
 	char	*res;
-	int		res_len;
-	int		i;
-	int		j;
 
-	i = -1;
-	res_len = 0;
+	pars.i = -1;
+	pars.res_len = 0;
 	while (--ac)
-		res_len += ft_strlen(av[ac]) + 1;
-	res = (char *)malloc(sizeof(char) * res_len);
+		pars.res_len += ft_strlen(av[ac]) + 1;
+	res = (char *)malloc(sizeof(char) * pars.res_len);
 	if (!res)
 		error_exit();
 	while (av[++ac])
 	{
-		j = -1;
-		while (av[ac][++j])
-			res[++i] = av[ac][j];
+		pars.j = -1;
+		while (av[ac][++pars.j])
+			res[++pars.i] = av[ac][pars.j];
+		if (pars.j == 0)
+			error_exit();
 		if (av[ac + 1])
-			res[++i] = ' ';
+			res[++pars.i] = ' ';
 	}
-	res[++i] = '\0';
+	res[++pars.i] = '\0';
+	check_strjoin(pars, res);
 	return (res);
+}
+
+int	check_strjoin(t_pars pars, char *res)
+{
+	pars.i = -1;
+	pars.j = -1;
+	while (res[++pars.i])
+		if (res[pars.i] != ' ')
+			pars.j = 1;
+	if (pars.j == -1)
+		error_exit();
+	return (0);
 }

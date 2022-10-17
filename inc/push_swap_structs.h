@@ -35,6 +35,9 @@ typedef struct s_vars
 
 typedef struct s_pars
 {
+	int		j;
+	int		i;
+	int		res_len;
 	int		iterator;
 	char	*str;
 	char	**matrix;

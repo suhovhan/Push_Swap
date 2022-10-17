@@ -19,10 +19,10 @@ int	main(int ac, char **av)
 	t_pars		pars;
 	int			nbr;
 
+	chek_num(ac, av);
 	b = NULL;
 	pars.iterator = -1;
 	pars.str = ft_strjoin(ac, av);
-	chek_num(ac, av);
 	pars.matrix = ft_split(pars.str);
 	while (pars.matrix[++pars.iterator])
 	{

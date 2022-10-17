@@ -32,6 +32,7 @@ int			check_duble(t_stack **nums);
 int			free_and_exit(t_stack **stack_a);
 void		error_exit(void);
 char		*ft_strjoin(int ac, char **av);
+int			check_strjoin(t_pars pars, char *res);
 int			append(t_stack **head_ref, int new_data);
 int			ft_list_len(t_stack *head_ref);
 int			index_manager(t_stack **head_ref, t_vars vars);
