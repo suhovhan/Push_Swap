@@ -1,52 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 22:37:33 by suhovhan          #+#    #+#             */
-/*   Updated: 2022/10/16 22:37:36 by suhovhan         ###   ########.fr       */
+/*   Created: 2022/10/17 07:22:23 by suhovhan          #+#    #+#             */
+/*   Updated: 2022/10/17 07:22:25 by suhovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	pchar(char c)
+int	free_and_exit(t_stack **stack_a)
 {
-	write(1, &c, 1);
-}
+	t_stack	*a;
+	t_stack	*tmp;
 
-void	pstr(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		pchar(str[i]);
-}
-
-void	print_number(int nbr)
-{
-	long int	nb;
-
-	nb = nbr;
-	if (nb < 0)
+	a = *stack_a;
+	tmp = a->next;
+	while (tmp)
 	{
-		nb *= -1;
-		pchar('-');
+		free(a);
+		a = tmp;
+		tmp = tmp->next;
 	}
-	if (nb > 9)
-		print_number(nb / 10);
-	pchar(nb % 10 + '0');
+	exit(0);
+	return (0);
 }
 
-int	ft_strlen(char *str)
+void	error_exit(void)
 {
-	int	len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	write(2, "Error\n", 6);
+	exit(0);
 }

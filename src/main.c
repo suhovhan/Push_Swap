@@ -1,34 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 22:37:23 by suhovhan          #+#    #+#             */
+/*   Updated: 2022/10/16 22:37:25 by suhovhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int	main(int ac, char **av)
 {
-	int			i;
-	int			nbr;
-	char		**matrix;
 	t_stack		*a;
 	t_stack		*b;
+	t_pars		pars;
+	int			nbr;
 
 	b = NULL;
-	i = -1;
+	pars.iterator = -1;
+	pars.str = ft_strjoin(ac, av);
 	chek_num(ac, av);
-	matrix = ft_split(ft_strjoin(ac, av));
-	while (matrix[++i])
+	pars.matrix = ft_split(pars.str);
+	while (pars.matrix[++pars.iterator])
 	{
-		check_right_num(matrix[i]);
-		nbr = ft_atoi(matrix[i]);
+		check_right_num(pars.matrix[pars.iterator]);
+		nbr = ft_atoi(pars.matrix[pars.iterator]);
 		append(&a, nbr);
 	}
 	check_duble(&a);
 	get_index(&a);
 	run_algo(&a, &b);
-	// while (a)
-	// {
-	// 	printf("nb = %d  index = %d\n", a->nb, a->index);
-	// 	a = a->next;
-	// }
-	i = -1;
-	while (matrix[++i])
-		free(matrix[i]);
-	free(matrix);
+	pars.iterator = -1;
+	while (pars.matrix[++pars.iterator])
+		free(pars.matrix[pars.iterator]);
+	free(pars.matrix);
+	free(pars.str);
 	return (0);
 }

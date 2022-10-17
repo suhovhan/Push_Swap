@@ -1,14 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 22:36:35 by suhovhan          #+#    #+#             */
+/*   Updated: 2022/10/16 22:36:38 by suhovhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int	run_algo(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *a;
-	t_stack *b;
-	int	len_a;
+	t_stack	*a;
+	t_stack	*b;
+	int		len_a;
 
 	a = *stack_a;
 	b = *stack_b;
 	len_a = ft_list_len(a);
+	if (is_sorted(a))
+		free_and_exit(stack_a);
 	if (len_a == 1)
 		return (0);
 	else if (len_a == 2)
@@ -26,160 +40,13 @@ int	run_algo(t_stack **stack_a, t_stack **stack_b)
 	return (0);
 }
 
-int	algo2(t_stack **a)
-{
-	t_stack	*ptr;
-
-	ptr = *a;
-	if (ptr->index < ptr->next->index)
-		return (0);
-	else
-		sa(a);
-	return (0);
-}
-
-
-int	algo3(t_stack **stack_a)
-{
-	t_stack	*ptr;
-
-	ptr = *stack_a;
-	if (ptr->index == 0 && ptr->next->index == 1)
-		return (0);
-	else if (ptr->index == 0 && ptr->next->index == 2)
-	{
-		rra(&ptr);
-		sa(&ptr);
-	}
-	else if (ptr->index == 1 && ptr->next->index == 0)
-		sa(&ptr);
-	else if (ptr->index == 1 && ptr->next->index == 2)
-		rra(&ptr);
-	else if (ptr->index == 2 && ptr->next->index == 0)
-		ra(&ptr);
-	else if (ptr->index == 2 && ptr->next->index == 1)
-	{
-		ra(&ptr);
-		sa(&ptr);
-	}
-	*stack_a = ptr;
-	return (0);
-}
-
-int	algo4(t_stack **stack_a, t_stack **stack_b)
+t_algo	algo_meneger(t_stack **stack_a, t_stack **stack_b, t_algo data)
 {
 	t_stack	*a;
 	t_stack	*b;
 
 	a = *stack_a;
 	b = *stack_b;
-	if (a->index == 3)
-	{
-		pb(&a, &b);
-		algo3(&a);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else if (a->next->index == 3)
-	{
-		sa(&a);
-		pb(&a, &b);
-		algo3(&a);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else if (a->next->next->index == 3)
-	{
-		rra(&a);
-		rra(&a);
-		pb(&a, &b);
-		algo3(&a);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else
-	{
-		rra(&a);
-		pb(&a, &b);
-		algo3(&a);
-		pa(&a, &b);
-		ra(&a);
-	}
-	*stack_a = a;
-	*stack_b = b;
-	return (0);
-}
-
-int	algo5(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack *a;
-	t_stack *b;
-
-	a = *stack_a;
-	b = *stack_b;
-	if (a->index == 4)
-	{
-		pb(&a, &b);
-		algo4(&a, &b);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else if (a->next->index == 4)
-	{
-		sa(&a);
-		pb(&a, &b);
-		algo4(&a, &b);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else if (a->next->next->index == 4)
-	{
-		ra(&a);
-		sa(&a);
-		pb(&a, &b);
-		algo4(&a, &b);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else if (a->next->next->next->index == 4)
-	{
-		rra(&a);
-		rra(&a);
-		pb(&a, &b);
-		algo4(&a, &b);
-		pa(&a, &b);
-		ra(&a);
-	}
-	else
-	{
-		rra(&a);
-		pb(&a, &b);
-		algo4(&a, &b);
-		pa(&a, &b);
-		ra(&a);
-	}
-	*stack_a = a;
-	*stack_b = b;
-	return (0);
-}
-
-t_algo	to_stack_b(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*a;
-	t_stack *b;
-	t_algo	data;
-
-	a = *stack_a;
-	b = *stack_b;
-	data.counter = 0;
-	if (ft_list_len(a) <= 60)
-		data.n = 1;
-	else if (ft_list_len(a) <= 100)
-		data.n = 15;
-	else if (ft_list_len(a) <= 500)
-		data.n = 30;
-	else
-		data.n = 60;
 	while (a)
 	{
 		if (a->index <= data.counter)
@@ -196,6 +63,29 @@ t_algo	to_stack_b(t_stack **stack_a, t_stack **stack_b)
 		else
 			ra(&a);
 	}
+	*stack_a = a;
+	*stack_b = b;
+	return (data);
+}
+
+t_algo	to_stack_b(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_algo	data;
+
+	a = *stack_a;
+	b = *stack_b;
+	data.counter = 0;
+	if (ft_list_len(a) <= 60)
+		data.n = 1;
+	else if (ft_list_len(a) <= 100)
+		data.n = 15;
+	else if (ft_list_len(a) <= 500)
+		data.n = 30;
+	else
+		data.n = 60;
+	data = algo_meneger(&a, &b, data);
 	data.counter--;
 	*stack_a = a;
 	*stack_b = b;
@@ -204,15 +94,21 @@ t_algo	to_stack_b(t_stack **stack_a, t_stack **stack_b)
 
 int	max_node_to_start(t_stack **stack_b, t_algo data)
 {
-	t_stack *b;
+	t_stack	*b;
+	t_stack	*tmp;
 	int		pos;
-	
+
 	b = *stack_b;
+	tmp = b;
 	data.iterator = -1;
 	pos = 1;
 	while (++data.iterator < data.n)
-		if (b->index == data.counter)
+	{
+		if (tmp->index == data.counter)
 			pos = -1;
+		else
+			tmp = tmp->next;
+	}
 	while (data.counter && b->index != data.counter)
 	{
 		if (pos == -1)

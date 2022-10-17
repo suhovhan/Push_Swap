@@ -1,12 +1,16 @@
-#include "../inc/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 22:36:45 by suhovhan          #+#    #+#             */
+/*   Updated: 2022/10/16 22:36:47 by suhovhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	error_exit(char *error)
-{
-	pstr("ERROR:  ");
-	pstr(error);
-	pchar('\n');
-	exit(0);
-}
+#include "../inc/push_swap.h"
 
 int	chek_num(int ac, char **av)
 {
@@ -15,14 +19,14 @@ int	chek_num(int ac, char **av)
 
 	i = ac - 2;
 	if (ac < 2)
-		error_exit("there is no arguments");
+		exit(0);
 	while (av[++i])
 	{
 		j = -1;
 		while (av[i][++j])
 			if ((av[i][j] < '0' || av[i][j] > '9') && av[i][j] != ' ' \
 			&& av[i][j] != '-' && av[i][j] != '+')
-				error_exit("some arguments aren’t integers");
+				error_exit();
 	}
 	return (0);
 }
@@ -35,11 +39,17 @@ int	check_right_num(char *s)
 	if (s[i] == '-' || s[i] == '+')
 		i++;
 	if (!s[i] || s[i] < '0' || s[i] > '9')
-		error_exit("there was non logic int");
+	{
+		free(s);
+		error_exit();
+	}
 	while (s[i] >= '0' && s[i] <= '9')
 		i++;
 	if (s[i] && s[i] != ' ')
-		error_exit("there was non logic int");
+	{
+		free(s);
+		error_exit();
+	}
 	return (0);
 }
 
@@ -47,8 +57,9 @@ int	check_duble(t_stack **nums)
 {
 	t_stack	*ptr;
 	t_stack	*tmp;
+
 	if (*nums == NULL || nums == NULL)
-		exit(0);
+		free_and_exit(nums);
 	ptr = *nums;
 	while (ptr)
 	{
@@ -56,7 +67,10 @@ int	check_duble(t_stack **nums)
 		while (tmp)
 		{
 			if (ptr->nb == tmp->nb)
-				error_exit("there was dublicate");
+			{
+				write(2, "Error\n", 6);
+				free_and_exit(nums);
+			}
 			tmp = tmp->next;
 		}
 		ptr = ptr->next;

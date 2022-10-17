@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 22:36:14 by suhovhan          #+#    #+#             */
+/*   Updated: 2022/10/16 22:36:16 by suhovhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int	getwordcount(char *s)
@@ -24,7 +36,7 @@ int	getwordcount(char *s)
 	return (count);
 }
 
-char	*fillword(char *s, int startindex, int len)
+char	*fillword(char *s, int start_index, int len)
 {
 	char	*word;
 	int		i;
@@ -33,9 +45,9 @@ char	*fillword(char *s, int startindex, int len)
 	word = malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return (NULL);
-	while (++i < len)
-		word[i] = s[startindex + i];
-	word[i] = 0;
+	while (++i < len && s[i] != '\0')
+		word[i] = s[start_index + i];
+	word[i] = '\0';
 	return (word);
 }
 
@@ -56,7 +68,7 @@ char	**ft_split(char *s)
 		while (s[start] && s[start] == ' ')
 			start++;
 		end = start;
-		while (s[end] && s[end] != ' ')
+		while (s[end] != '\0' && s[end] != ' ')
 			end++;
 		res[i] = fillword(s, start, end - start);
 		start = end;
