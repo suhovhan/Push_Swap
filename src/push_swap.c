@@ -51,17 +51,17 @@ t_algo	algo_meneger(t_stack **stack_a, t_stack **stack_b, t_algo data)
 	{
 		if (a->index <= data.counter)
 		{
-			pb(&a, &b);
-			rb(&b);
+			pb(&a, &b, 1);
+			rb(&b, 1);
 			data.counter++;
 		}
 		else if (a->index <= data.counter + data.n)
 		{
-			pb(&a, &b);
+			pb(&a, &b, 1);
 			data.counter++;
 		}
 		else
-			ra(&a);
+			ra(&a, 1);
 	}
 	*stack_a = a;
 	*stack_b = b;
@@ -112,9 +112,9 @@ int	max_node_to_start(t_stack **stack_b, t_algo data)
 	while (data.counter && b->index != data.counter)
 	{
 		if (pos == -1)
-			rb(&b);
+			rb(&b, 1);
 		else
-			rrb(&b);
+			rrb(&b, 1);
 	}
 	*stack_b = b;
 	return (0);
@@ -132,7 +132,7 @@ int	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	while (b)
 	{
 		max_node_to_start(&b, data);
-		pa(&a, &b);
+		pa(&a, &b, 1);
 		data.counter--;
 	}
 	*stack_a = a;

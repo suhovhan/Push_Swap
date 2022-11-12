@@ -43,4 +43,17 @@ typedef struct s_pars
 	char	**matrix;
 }				t_pars;
 
+typedef struct s_checker_args
+{
+	int			nbr;
+	int			ac;
+	int			j;
+	int			i;
+	int			res_len;
+	int			iterator;
+	char		*str;
+	char		**av;
+	char		**matrix;
+}				t_checker_args;
+
 #endif

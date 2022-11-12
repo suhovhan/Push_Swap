@@ -12,15 +12,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "./push_swap_structs.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "./push_swap_structs.h"
 
 int			ft_strlen(char *str);
-int			getwordcount(char *s);
+int			getwordcount(char *s, char c);
 char		*fillword(char *s, int start_index, int len);
-char		**ft_split(char *s);
+char		**ft_split(char *s, char c);
 void		pchar(char c);
 void		pstr(char *str);
 void		print_number(int nbr);
@@ -38,17 +38,17 @@ int			ft_list_len(t_stack *head_ref);
 int			index_manager(t_stack **head_ref, t_vars vars);
 int			set_index(t_stack **head_ref);
 int			get_index(t_stack **head_ref);
-int			pa(t_stack **a, t_stack **b);
-int			pb(t_stack **head_a, t_stack **head_b);
-int			ss(t_stack **head_a, t_stack **head_b);
-int			rr(t_stack **head_a, t_stack **head_b);
-int			rrr(t_stack **head_a, t_stack **head_b);
-int			sa(t_stack **head_a);
-int			sb(t_stack **head_b);
-int			ra(t_stack **head_a);
-int			rb(t_stack **head_b);
-int			rra(t_stack **head_a);
-int			rrb(t_stack **head_b);
+int			pa(t_stack **a, t_stack **b, int i);
+int			pb(t_stack **head_a, t_stack **head_b, int i);
+int			ss(t_stack **head_a, t_stack **head_b, int i);
+int			rr(t_stack **head_a, t_stack **head_b, int i);
+int			rrr(t_stack **head_a, t_stack **head_b, int i);
+int			sa(t_stack **head_a, int i);
+int			sb(t_stack **head_b, int i);
+int			ra(t_stack **head_a, int i);
+int			rb(t_stack **head_b, int i);
+int			rra(t_stack **head_a, int i);
+int			rrb(t_stack **head_b, int i);
 int			is_sorted(t_stack *a);
 int			algo2(t_stack **a);
 int			algo3(t_stack **stack_a);

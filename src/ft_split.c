@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-int	getwordcount(char *s)
+int	getwordcount(char *s, char c)
 {
 	int	count;
 	int	i;
@@ -21,15 +21,15 @@ int	getwordcount(char *s)
 	i = -1;
 	count = 1;
 	len = ft_strlen(s);
-	while (s[++i] && s[i] == ' ')
+	while (s[++i] && s[i] == c)
 		;
-	while (s[--len] && s[len] == ' ' && i < len)
+	while (s[--len] && s[len] == c && i < len)
 		;
 	if (i == ft_strlen(s))
 		return (0);
 	while (s[i] && i < len)
 	{
-		if (s[i] == ' ' && s[i - 1] != ' ')
+		if (s[i] == c && s[i - 1] != c)
 			count++;
 		i++;
 	}
@@ -51,7 +51,7 @@ char	*fillword(char *s, int start_index, int len)
 	return (word);
 }
 
-char	**ft_split(char *s)
+char	**ft_split(char *s, char c)
 {
 	int		start;
 	int		end;
@@ -61,14 +61,14 @@ char	**ft_split(char *s)
 
 	start = 0;
 	i = -1;
-	count = getwordcount(s);
+	count = getwordcount(s, c);
 	res = (char **)malloc(sizeof(char *) * count + 1);
 	while (++i < count)
 	{
-		while (s[start] && s[start] == ' ')
+		while (s[start] && s[start] == c)
 			start++;
 		end = start;
-		while (s[end] != '\0' && s[end] != ' ')
+		while (s[end] != '\0' && s[end] != c)
 			end++;
 		res[i] = fillword(s, start, end - start);
 		start = end;

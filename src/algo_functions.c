@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-int	pa(t_stack **head_a, t_stack **head_b)
+int	pa(t_stack **head_a, t_stack **head_b, int i)
 {
 	t_stack	*tmp;
 	t_stack	*a;
@@ -28,11 +28,12 @@ int	pa(t_stack **head_a, t_stack **head_b)
 	a = tmp;
 	*head_a = a;
 	*head_b = b;
-	write(1, "pa\n", 3);
+	if (i == 1)
+		write(1, "pa\n", 3);
 	return (0);
 }
 
-int	pb(t_stack **head_a, t_stack **head_b)
+int	pb(t_stack **head_a, t_stack **head_b, int i)
 {
 	t_stack	*tmp;
 	t_stack	*a;
@@ -48,11 +49,12 @@ int	pb(t_stack **head_a, t_stack **head_b)
 	b = tmp;
 	*head_a = a;
 	*head_b = b;
-	write(1, "pb\n", 3);
+	if (i == 1)
+		write(1, "pb\n", 3);
 	return (0);
 }
 
-int	sa(t_stack **head_a)
+int	sa(t_stack **head_a, int i)
 {
 	t_stack	*tmp;
 	t_stack	*a;
@@ -63,11 +65,12 @@ int	sa(t_stack **head_a)
 	tmp->next = a;
 	a = tmp;
 	*head_a = a;
-	write(1, "sa\n", 3);
+	if (i == 1)
+		write(1, "sa\n", 3);
 	return (0);
 }
 
-int	sb(t_stack **head_b)
+int	sb(t_stack **head_b, int i)
 {
 	t_stack	*tmp;
 	t_stack	*b;
@@ -78,14 +81,16 @@ int	sb(t_stack **head_b)
 	tmp->next = b;
 	b = tmp;
 	*head_b = b;
-	write(1, "sb\n", 3);
+	if (i == 1)
+		write(1, "sb\n", 3);
 	return (0);
 }
 
-int	ss(t_stack **head_a, t_stack **head_b)
+int	ss(t_stack **head_a, t_stack **head_b, int i)
 {
-	sa(head_a);
-	sb(head_b);
-	write(1, "ss\n", 3);
+	sa(head_a, i);
+	sb(head_b, i);
+	if (i == 1)
+		write(1, "ss\n", 3);
 	return (0);
 }

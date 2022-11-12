@@ -31,7 +31,7 @@ int	algo2(t_stack **a)
 	if (ptr->index < ptr->next->index)
 		return (0);
 	else
-		sa(a);
+		sa(a, 1);
 	return (0);
 }
 
@@ -44,19 +44,19 @@ int	algo3(t_stack **stack_a)
 		return (0);
 	else if (ptr->index == 0 && ptr->next->index == 2)
 	{
-		rra(&ptr);
-		sa(&ptr);
+		rra(&ptr, 1);
+		sa(&ptr, 1);
 	}
 	else if (ptr->index == 1 && ptr->next->index == 0)
-		sa(&ptr);
+		sa(&ptr, 1);
 	else if (ptr->index == 1 && ptr->next->index == 2)
-		rra(&ptr);
+		rra(&ptr, 1);
 	else if (ptr->index == 2 && ptr->next->index == 0)
-		ra(&ptr);
+		ra(&ptr, 1);
 	else if (ptr->index == 2 && ptr->next->index == 1)
 	{
-		ra(&ptr);
-		sa(&ptr);
+		ra(&ptr, 1);
+		sa(&ptr, 1);
 	}
 	*stack_a = ptr;
 	return (0);
@@ -70,14 +70,14 @@ int	algo4(t_stack **stack_a, t_stack **stack_b)
 	a = *stack_a;
 	b = *stack_b;
 	if (a->next->index == 3)
-		sa(&a);
+		sa(&a, 1);
 	else if (a->next->next->index == 3)
 	{
-		rra(&a);
-		rra(&a);
+		rra(&a, 1);
+		rra(&a, 1);
 	}
 	else if (a->next->next->next->index == 3)
-		rra(&a);
+		rra(&a, 1);
 	comb_algo4(&a, &b);
 	*stack_a = a;
 	*stack_b = b;
@@ -92,19 +92,19 @@ int	algo5(t_stack **stack_a, t_stack **stack_b)
 	a = *stack_a;
 	b = *stack_b;
 	if (a->next->index == 4)
-		sa(&a);
+		sa(&a, 1);
 	else if (a->next->next->index == 4)
 	{
-		ra(&a);
-		sa(&a);
+		ra(&a, 1);
+		sa(&a, 1);
 	}
 	else if (a->next->next->next->index == 4)
 	{
-		rra(&a);
-		rra(&a);
+		rra(&a, 1);
+		rra(&a, 1);
 	}
 	else if (a->next->next->next->next->index == 4)
-		rra(&a);
+		rra(&a, 1);
 	comb_algo5(&a, &b);
 	*stack_a = a;
 	*stack_b = b;
