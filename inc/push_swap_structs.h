@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_structs.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: suhovhan <suhovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 22:39:11 by suhovhan          #+#    #+#             */
-/*   Updated: 2022/10/16 22:51:05 by suhovhan         ###   ########.fr       */
+/*   Updated: 2022/12/12 04:59:01 by suhovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef PUSH_SWAP_STRUCTS_H
 # define PUSH_SWAP_STRUCTS_H
 
@@ -47,7 +48,6 @@ typedef struct s_checker_args
 {
 	int			nbr;
 	int			ac;
-	int			j;
 	int			i;
 	int			res_len;
 	int			iterator;

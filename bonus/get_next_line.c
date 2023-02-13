@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhovhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: suhovhan <suhovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 21:00:18 by suhovhan          #+#    #+#             */
-/*   Updated: 2022/05/23 21:10:24 by suhovhan         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:38:08 by suhovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "../inc/bonus.h"
 
 char	*ft_read_to_left_str(int fd, char *left_str)
 {

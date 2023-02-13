@@ -1,10 +1,23 @@
-#include "bonus.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bonus.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: suhovhan <suhovhan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/30 17:34:54 by suhovhan          #+#    #+#             */
+/*   Updated: 2022/11/30 18:58:49 by suhovhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/bonus.h"
 
 int	main(int ac, char **av)
 {
-	t_checker_args  data;
+	t_checker_args	data;
 	t_stack			*stack_a;
 	t_stack			*stack_b;
+
 	data.ac = ac;
 	data.av = av;
 	stack_a = NULL;
@@ -13,7 +26,6 @@ int	main(int ac, char **av)
 	if (check_args(data, &stack_a))
 		error_exit();
 	data.str = get_next_line(0);
-		
 	if (data.str)
 	{
 		data.matrix = ft_split(data.str, '\n');
