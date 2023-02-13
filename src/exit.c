@@ -6,7 +6,7 @@
 /*   By: suhovhan <suhovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 07:22:23 by suhovhan          #+#    #+#             */
-/*   Updated: 2022/12/12 03:19:50 by suhovhan         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:07:41 by suhovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	free_and_exit(t_stack **stack_a)
 		a = tmp;
 		tmp = tmp->next;
 	}
-	while (1);
+	while (1)
+		;
 	exit(0);
 	return (0);
 }
